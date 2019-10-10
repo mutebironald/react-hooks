@@ -8,6 +8,8 @@ import SpeakerData from "./SpeakerData";
 import SpeakerDetail from "./SpeakerDetail";
 import { ConfigContext } from "./App";
 
+import speakersReducer from './speakersReducer';
+
 const Speakers = ({}) => {
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
   const [speakingSunday, setSpeakingSunday] = useState(true);
@@ -18,15 +20,7 @@ const Speakers = ({}) => {
 
   const context = useContext(ConfigContext);
 
-  function speakersReducer(state, action) {
-    switch (action.type) {
-      case "setSpeakerList": {
-        return action.data;
-      }
-      default:
-        return state;
-    }
-  }
+  
 
   useEffect(() => {
     setIsLoading(true);
@@ -75,15 +69,19 @@ const Speakers = ({}) => {
     e.preventDefault();
     debugger;
     const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
-    setSpeakerList(
-      speakerList.map(item => {
-        if (item.id === sessionId) {
-          item.favorite = favoriteValue;
-          return item;
-        }
-        return item;
-      })
-    );
+    dispatch({
+      type: favoriteValue === true ? "favorite" : "unfavorite",
+      sessionId
+    });
+    // setSpeakerList(
+    //   speakerList.map(item => {
+    //     if (item.id === sessionId) {
+    //       item.favorite = favoriteValue;
+    //       return item;
+    //     }
+    //     return item;
+    //   })
+    // );
     //console.log("changing session favorte to " + favoriteValue);
   };
 

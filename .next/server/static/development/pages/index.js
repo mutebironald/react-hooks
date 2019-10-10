@@ -1893,7 +1893,7 @@ const pageToShow = pageName => {
 
 const configValue = {
   showSignMeUp: true,
-  showSpeakerSpeakingDays: false
+  showSpeakerSpeakingDays: true
 };
 
 const App = ({
@@ -2633,10 +2633,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SpeakerData__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./SpeakerData */ "./src/SpeakerData.js");
 /* harmony import */ var _SpeakerDetail__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./SpeakerDetail */ "./src/SpeakerDetail.js");
 /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./App */ "./src/App.js");
+/* harmony import */ var _speakersReducer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./speakersReducer */ "./src/speakersReducer.js");
 
 
 var _jsxFileName = "/Users/ronaldmutebi/Desktop/Desktop/bench/react-hooks-trials/src/Speakers.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
+
 
 
 
@@ -2659,25 +2661,12 @@ const Speakers = ({}) => {
   const {
     0: speakerList,
     1: dispatch
-  } = Object(react__WEBPACK_IMPORTED_MODULE_2__["useReducer"])(speakersReducer, []);
+  } = Object(react__WEBPACK_IMPORTED_MODULE_2__["useReducer"])(_speakersReducer__WEBPACK_IMPORTED_MODULE_10__["default"], []);
   const {
     0: isLoading,
     1: setIsLoading
   } = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(true);
   const context = Object(react__WEBPACK_IMPORTED_MODULE_2__["useContext"])(_App__WEBPACK_IMPORTED_MODULE_9__["ConfigContext"]);
-
-  function speakersReducer(state, action) {
-    switch (action.type) {
-      case "setSpeakerList":
-        {
-          return action.data;
-        }
-
-      default:
-        return state;
-    }
-  }
-
   Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(() => {
     setIsLoading(true);
     new _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_1___default.a(function (resolve) {
@@ -2732,74 +2721,79 @@ const Speakers = ({}) => {
 
     const sessionId = _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(e.target.attributes["data-sessionid"].value);
 
-    setSpeakerList(speakerList.map(item => {
-      if (item.id === sessionId) {
-        item.favorite = favoriteValue;
-        return item;
-      }
-
-      return item;
-    })); //console.log("changing session favorte to " + favoriteValue);
+    dispatch({
+      type: favoriteValue === true ? "favorite" : "unfavorite",
+      sessionId
+    }); // setSpeakerList(
+    //   speakerList.map(item => {
+    //     if (item.id === sessionId) {
+    //       item.favorite = favoriteValue;
+    //       return item;
+    //     }
+    //     return item;
+    //   })
+    // );
+    //console.log("changing session favorte to " + favoriteValue);
   };
 
   if (isLoading) return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90
+      lineNumber: 88
     },
     __self: undefined
   }, "Loading...");
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 93
+      lineNumber: 91
     },
     __self: undefined
   }, __jsx(_src_Header__WEBPACK_IMPORTED_MODULE_5__["Header"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94
+      lineNumber: 92
     },
     __self: undefined
   }), __jsx(_src_Menu__WEBPACK_IMPORTED_MODULE_6__["Menu"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 95
+      lineNumber: 93
     },
     __self: undefined
   }), __jsx("div", {
     className: "container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 96
+      lineNumber: 94
     },
     __self: undefined
   }, __jsx("div", {
     className: "btn-toolbar  margintopbottom5 checkbox-bigger",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97
+      lineNumber: 95
     },
     __self: undefined
   }, context.showSpeakerSpeakingDays === false ? null : __jsx("div", {
     className: "hide",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99
+      lineNumber: 97
     },
     __self: undefined
   }, __jsx("div", {
     className: "form-check-inline",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100
+      lineNumber: 98
     },
     __self: undefined
   }, __jsx("label", {
     className: "form-check-label",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 101
+      lineNumber: 99
     },
     __self: undefined
   }, __jsx("input", {
@@ -2809,21 +2803,21 @@ const Speakers = ({}) => {
     checked: speakingSaturday,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102
+      lineNumber: 100
     },
     __self: undefined
   }), "Saturday Speakers")), __jsx("div", {
     className: "form-check-inline",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 111
+      lineNumber: 109
     },
     __self: undefined
   }, __jsx("label", {
     className: "form-check-label",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112
+      lineNumber: 110
     },
     __self: undefined
   }, __jsx("input", {
@@ -2833,21 +2827,21 @@ const Speakers = ({}) => {
     checked: speakingSunday,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 113
+      lineNumber: 111
     },
     __self: undefined
   }), "Sunday Speakers")))), __jsx("div", {
     className: "row",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 125
+      lineNumber: 123
     },
     __self: undefined
   }, __jsx("div", {
     className: "card-deck",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 126
+      lineNumber: 124
     },
     __self: undefined
   }, speakerListFiltered.map(({
@@ -2867,7 +2861,7 @@ const Speakers = ({}) => {
       bio: bio,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 130
+        lineNumber: 128
       },
       __self: undefined
     });
@@ -2875,6 +2869,48 @@ const Speakers = ({}) => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Speakers);
+
+/***/ }),
+
+/***/ "./src/speakersReducer.js":
+/*!********************************!*\
+  !*** ./src/speakersReducer.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const speakersReducer = (state, action) => {
+  function updateFavorite(favoriteValue) {
+    return state.map((item, index) => {
+      if (item.id === action.sessionId) {
+        item.favorite = favoriteValue;
+        return item;
+      }
+
+      return item;
+    });
+  }
+
+  switch (action.type) {
+    case "setSpeakerList":
+      {
+        return action.data;
+      }
+
+    case "favorite":
+      return updateFavorite(true);
+
+    case "unfavorite":
+      return updateFavorite(false);
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (speakersReducer);
 
 /***/ }),
 
