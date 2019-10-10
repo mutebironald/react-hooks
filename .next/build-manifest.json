@@ -4,12 +4,10 @@
     "static/development/dll/dll_492c97d20afdca23aa1f.js.map"
   ],
   "pages": {
-    "/ImageChangeOnMouseOver": [
+    "/": [
       "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/ImageChangeOnScroll": [
-      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
       "static/runtime/main.js"
     ],
     "/_app": [
@@ -18,6 +16,18 @@
     ],
     "/_error": [
       "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/index": [
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/runtime/main.js"
+    ],
+    "/speakers": [
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
       "static/runtime/main.js"
     ]
   }
