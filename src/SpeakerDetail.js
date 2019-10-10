@@ -1,7 +1,7 @@
 import React from 'react';
 import ImageToggleOnScroll from "./ImageToggleOnScroll";
 
-const SpeakerDetail = React.memo(({ //with React.memo(), the functiontn compnent will only render when its props have changed.
+const SpeakerDetail = React.memo(({ //with React.memo(), the functiontn compnent will only render when its props have changed.//added after useMemo
                            id,
                            firstName,
                            lastName,

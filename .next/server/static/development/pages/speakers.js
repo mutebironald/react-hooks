@@ -2540,7 +2540,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 const SpeakerDetail = react__WEBPACK_IMPORTED_MODULE_0___default.a.memo(({
-  //with React.memo(), the functiontn compnent will only render when its props have changed.
+  //with React.memo(), the functiontn compnent will only render when its props have changed.//added after useMemo
   id,
   firstName,
   lastName,
