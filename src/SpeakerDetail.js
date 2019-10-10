@@ -1,7 +1,7 @@
 import React from 'react';
 import ImageToggleOnScroll from "./ImageToggleOnScroll";
 
-const SpeakerDetail = React.memo(({ //with React.memo(), the futn compnent will only render when its props have changed.
+const SpeakerDetail = React.memo(({ //with React.memo(), the functiontn compnent will only render when its props have changed.
                            id,
                            firstName,
                            lastName,
@@ -9,7 +9,7 @@ const SpeakerDetail = React.memo(({ //with React.memo(), the futn compnent will 
                            bio,
                            onHeartFavoriteHandler
                        }) => {
-    //console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
+    console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
     return (
         <div className="card col-4 cardmin">
             <ImageToggleOnScroll

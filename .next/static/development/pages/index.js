@@ -13701,7 +13701,7 @@ var SpeakerDetail = react__WEBPACK_IMPORTED_MODULE_0___default.a.memo(function (
       favorite = _ref.favorite,
       bio = _ref.bio,
       onHeartFavoriteHandler = _ref.onHeartFavoriteHandler;
-  //console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
+  console.log("SpeakerDetail:".concat(id, " ").concat(firstName, " ").concat(lastName, " ").concat(favorite));
   return __jsx("div", {
     className: "card col-4 cardmin",
     __source: {
@@ -13872,9 +13872,8 @@ var Speakers = function Speakers(_ref) {
     setSpeakingSunday(!speakingSunday);
   };
 
-  var heartFavoriteHandler = function heartFavoriteHandler(e, favoriteValue) {
+  var heartFavoriteHandler = Object(react__WEBPACK_IMPORTED_MODULE_3__["useCallback"])(function (e, favoriteValue) {
     e.preventDefault();
-    debugger;
 
     var sessionId = _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(e.target.attributes["data-sessionid"].value);
 
@@ -13891,66 +13890,65 @@ var Speakers = function Speakers(_ref) {
     //   })
     // );
     //console.log("changing session favorte to " + favoriteValue);
-  };
-
+  }, []);
   if (isLoading) return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88
+      lineNumber: 87
     },
     __self: this
   }, "Loading...");
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 91
+      lineNumber: 90
     },
     __self: this
   }, __jsx(_src_Header__WEBPACK_IMPORTED_MODULE_6__["Header"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 92
+      lineNumber: 91
     },
     __self: this
   }), __jsx(_src_Menu__WEBPACK_IMPORTED_MODULE_7__["Menu"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 93
+      lineNumber: 92
     },
     __self: this
   }), __jsx("div", {
     className: "container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94
+      lineNumber: 93
     },
     __self: this
   }, __jsx("div", {
     className: "btn-toolbar  margintopbottom5 checkbox-bigger",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 95
+      lineNumber: 94
     },
     __self: this
   }, context.showSpeakerSpeakingDays === false ? null : __jsx("div", {
     className: "hide",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97
+      lineNumber: 96
     },
     __self: this
   }, __jsx("div", {
     className: "form-check-inline",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 98
+      lineNumber: 97
     },
     __self: this
   }, __jsx("label", {
     className: "form-check-label",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99
+      lineNumber: 98
     },
     __self: this
   }, __jsx("input", {
@@ -13960,21 +13958,21 @@ var Speakers = function Speakers(_ref) {
     checked: speakingSaturday,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100
+      lineNumber: 99
     },
     __self: this
   }), "Saturday Speakers")), __jsx("div", {
     className: "form-check-inline",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109
+      lineNumber: 108
     },
     __self: this
   }, __jsx("label", {
     className: "form-check-label",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110
+      lineNumber: 109
     },
     __self: this
   }, __jsx("input", {
@@ -13984,21 +13982,21 @@ var Speakers = function Speakers(_ref) {
     checked: speakingSunday,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 111
+      lineNumber: 110
     },
     __self: this
   }), "Sunday Speakers")))), __jsx("div", {
     className: "row",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 123
+      lineNumber: 122
     },
     __self: this
   }, __jsx("div", {
     className: "card-deck",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 124
+      lineNumber: 123
     },
     __self: this
   }, speakerListFiltered.map(function (_ref4) {
@@ -14017,7 +14015,7 @@ var Speakers = function Speakers(_ref) {
       bio: bio,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 128
+        lineNumber: 127
       },
       __self: this
     });

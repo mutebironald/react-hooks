@@ -2540,7 +2540,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 const SpeakerDetail = react__WEBPACK_IMPORTED_MODULE_0___default.a.memo(({
-  //with React.memo(), the futn compnent will only render when its props have changed.
+  //with React.memo(), the functiontn compnent will only render when its props have changed.
   id,
   firstName,
   lastName,
@@ -2548,7 +2548,7 @@ const SpeakerDetail = react__WEBPACK_IMPORTED_MODULE_0___default.a.memo(({
   bio,
   onHeartFavoriteHandler
 }) => {
-  //console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
+  console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
   return __jsx("div", {
     className: "card col-4 cardmin",
     __source: {
@@ -2715,9 +2715,8 @@ const Speakers = ({}) => {
     setSpeakingSunday(!speakingSunday);
   };
 
-  const heartFavoriteHandler = (e, favoriteValue) => {
+  const heartFavoriteHandler = Object(react__WEBPACK_IMPORTED_MODULE_2__["useCallback"])((e, favoriteValue) => {
     e.preventDefault();
-    debugger;
 
     const sessionId = _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(e.target.attributes["data-sessionid"].value);
 
@@ -2734,66 +2733,65 @@ const Speakers = ({}) => {
     //   })
     // );
     //console.log("changing session favorte to " + favoriteValue);
-  };
-
+  }, []);
   if (isLoading) return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88
+      lineNumber: 87
     },
     __self: undefined
   }, "Loading...");
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 91
+      lineNumber: 90
     },
     __self: undefined
   }, __jsx(_src_Header__WEBPACK_IMPORTED_MODULE_5__["Header"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 92
+      lineNumber: 91
     },
     __self: undefined
   }), __jsx(_src_Menu__WEBPACK_IMPORTED_MODULE_6__["Menu"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 93
+      lineNumber: 92
     },
     __self: undefined
   }), __jsx("div", {
     className: "container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94
+      lineNumber: 93
     },
     __self: undefined
   }, __jsx("div", {
     className: "btn-toolbar  margintopbottom5 checkbox-bigger",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 95
+      lineNumber: 94
     },
     __self: undefined
   }, context.showSpeakerSpeakingDays === false ? null : __jsx("div", {
     className: "hide",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97
+      lineNumber: 96
     },
     __self: undefined
   }, __jsx("div", {
     className: "form-check-inline",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 98
+      lineNumber: 97
     },
     __self: undefined
   }, __jsx("label", {
     className: "form-check-label",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99
+      lineNumber: 98
     },
     __self: undefined
   }, __jsx("input", {
@@ -2803,21 +2801,21 @@ const Speakers = ({}) => {
     checked: speakingSaturday,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100
+      lineNumber: 99
     },
     __self: undefined
   }), "Saturday Speakers")), __jsx("div", {
     className: "form-check-inline",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109
+      lineNumber: 108
     },
     __self: undefined
   }, __jsx("label", {
     className: "form-check-label",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110
+      lineNumber: 109
     },
     __self: undefined
   }, __jsx("input", {
@@ -2827,21 +2825,21 @@ const Speakers = ({}) => {
     checked: speakingSunday,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 111
+      lineNumber: 110
     },
     __self: undefined
   }), "Sunday Speakers")))), __jsx("div", {
     className: "row",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 123
+      lineNumber: 122
     },
     __self: undefined
   }, __jsx("div", {
     className: "card-deck",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 124
+      lineNumber: 123
     },
     __self: undefined
   }, speakerListFiltered.map(({
@@ -2861,7 +2859,7 @@ const Speakers = ({}) => {
       bio: bio,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 128
+        lineNumber: 127
       },
       __self: undefined
     });
