@@ -2717,6 +2717,7 @@ const Speakers = ({}) => {
   };
 
   const heartFavoriteHandler = Object(react__WEBPACK_IMPORTED_MODULE_2__["useCallback"])((e, favoriteValue) => {
+    //adds performance optimization by preventing needless re-renders
     e.preventDefault();
 
     const sessionId = _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(e.target.attributes["data-sessionid"].value);

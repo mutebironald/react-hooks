@@ -74,7 +74,7 @@ const Speakers = ({}) => {
     setSpeakingSunday(!speakingSunday);
   };
 
-  const heartFavoriteHandler = useCallback((e, favoriteValue) => {
+  const heartFavoriteHandler = useCallback((e, favoriteValue) => { //adds performance optimization by preventing needless re-renders
     e.preventDefault();
     const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
     dispatch({
