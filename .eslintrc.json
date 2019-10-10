@@ -1,0 +1,17 @@
+{
+    "parseOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures":{
+            "jsx":true,
+            "destructuring": true,
+            "spread": true,
+            "experimentalObjectSpread": true
+        }
+    },
+    "plugins": ["react-hooks"],
+    "rules": {
+        //additional rules here
+        "react-hooks/rules-of-hooks": "error"
+    }
+}
