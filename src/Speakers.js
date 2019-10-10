@@ -50,7 +50,7 @@ const Speakers = ({}) => {
     setSpeakingSaturday(!speakingSaturday);
   };
 
-  const newSpeakerList = useMemo(
+  const newSpeakerList = useMemo( //useMemo helps cache some data on the client thus saving some compute time on our app
     () =>
       speakerList
         .filter(

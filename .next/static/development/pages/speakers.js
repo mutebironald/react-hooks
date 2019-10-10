@@ -13852,7 +13852,8 @@ var Speakers = function Speakers(_ref) {
     setSpeakingSaturday(!speakingSaturday);
   };
 
-  var newSpeakerList = Object(react__WEBPACK_IMPORTED_MODULE_3__["useMemo"])(function () {
+  var newSpeakerList = Object(react__WEBPACK_IMPORTED_MODULE_3__["useMemo"])( //useMemo helps cache some data on the client thus saving some compute time on our app
+  function () {
     return speakerList.filter(function (_ref3) {
       var sat = _ref3.sat,
           sun = _ref3.sun;

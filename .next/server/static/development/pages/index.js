@@ -2696,7 +2696,8 @@ const Speakers = ({}) => {
     setSpeakingSaturday(!speakingSaturday);
   };
 
-  const newSpeakerList = Object(react__WEBPACK_IMPORTED_MODULE_2__["useMemo"])(() => speakerList.filter(({
+  const newSpeakerList = Object(react__WEBPACK_IMPORTED_MODULE_2__["useMemo"])( //useMemo helps cache some data on the client thus saving some compute time on our app
+  () => speakerList.filter(({
     sat,
     sun
   }) => speakingSaturday && sat || speakingSunday && sun).sort(function (a, b) {
