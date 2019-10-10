@@ -1,4 +1,11 @@
-import React, { useState, useEffect, useContext, useReducer, useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  useReducer,
+  useCallback,
+  useMemo
+} from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../static/site.css";
@@ -8,7 +15,7 @@ import SpeakerData from "./SpeakerData";
 import SpeakerDetail from "./SpeakerDetail";
 import { ConfigContext } from "./App";
 
-import speakersReducer from './speakersReducer';
+import speakersReducer from "./speakersReducer";
 
 const Speakers = ({}) => {
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
@@ -19,8 +26,6 @@ const Speakers = ({}) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const context = useContext(ConfigContext);
-
-  
 
   useEffect(() => {
     setIsLoading(true);
@@ -45,9 +50,9 @@ const Speakers = ({}) => {
     setSpeakingSaturday(!speakingSaturday);
   };
 
-  const speakerListFiltered = isLoading
-    ? []
-    : speakerList
+  const newSpeakerList = useMemo(
+    () =>
+      speakerList
         .filter(
           ({ sat, sun }) => (speakingSaturday && sat) || (speakingSunday && sun)
         )
@@ -59,7 +64,11 @@ const Speakers = ({}) => {
             return 1;
           }
           return 0;
-        });
+        }),
+    [speakingSaturday, speakingSunday, speakerList]
+  );
+
+  const speakerListFiltered = isLoading ? [] : newSpeakerList;
 
   const handleChangeSunday = () => {
     setSpeakingSunday(!speakingSunday);

@@ -2696,7 +2696,7 @@ const Speakers = ({}) => {
     setSpeakingSaturday(!speakingSaturday);
   };
 
-  const speakerListFiltered = isLoading ? [] : speakerList.filter(({
+  const newSpeakerList = Object(react__WEBPACK_IMPORTED_MODULE_2__["useMemo"])(() => speakerList.filter(({
     sat,
     sun
   }) => speakingSaturday && sat || speakingSunday && sun).sort(function (a, b) {
@@ -2709,7 +2709,8 @@ const Speakers = ({}) => {
     }
 
     return 0;
-  });
+  }), [speakingSaturday, speakingSunday, speakerList]);
+  const speakerListFiltered = isLoading ? [] : newSpeakerList;
 
   const handleChangeSunday = () => {
     setSpeakingSunday(!speakingSunday);
@@ -2737,61 +2738,61 @@ const Speakers = ({}) => {
   if (isLoading) return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87
+      lineNumber: 96
     },
     __self: undefined
   }, "Loading...");
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90
+      lineNumber: 99
     },
     __self: undefined
   }, __jsx(_src_Header__WEBPACK_IMPORTED_MODULE_5__["Header"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 91
+      lineNumber: 100
     },
     __self: undefined
   }), __jsx(_src_Menu__WEBPACK_IMPORTED_MODULE_6__["Menu"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 92
+      lineNumber: 101
     },
     __self: undefined
   }), __jsx("div", {
     className: "container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 93
+      lineNumber: 102
     },
     __self: undefined
   }, __jsx("div", {
     className: "btn-toolbar  margintopbottom5 checkbox-bigger",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94
+      lineNumber: 103
     },
     __self: undefined
   }, context.showSpeakerSpeakingDays === false ? null : __jsx("div", {
     className: "hide",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 96
+      lineNumber: 105
     },
     __self: undefined
   }, __jsx("div", {
     className: "form-check-inline",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97
+      lineNumber: 106
     },
     __self: undefined
   }, __jsx("label", {
     className: "form-check-label",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 98
+      lineNumber: 107
     },
     __self: undefined
   }, __jsx("input", {
@@ -2801,21 +2802,21 @@ const Speakers = ({}) => {
     checked: speakingSaturday,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99
+      lineNumber: 108
     },
     __self: undefined
   }), "Saturday Speakers")), __jsx("div", {
     className: "form-check-inline",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 108
+      lineNumber: 117
     },
     __self: undefined
   }, __jsx("label", {
     className: "form-check-label",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109
+      lineNumber: 118
     },
     __self: undefined
   }, __jsx("input", {
@@ -2825,21 +2826,21 @@ const Speakers = ({}) => {
     checked: speakingSunday,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110
+      lineNumber: 119
     },
     __self: undefined
   }), "Sunday Speakers")))), __jsx("div", {
     className: "row",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 122
+      lineNumber: 131
     },
     __self: undefined
   }, __jsx("div", {
     className: "card-deck",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 123
+      lineNumber: 132
     },
     __self: undefined
   }, speakerListFiltered.map(({
@@ -2859,7 +2860,7 @@ const Speakers = ({}) => {
       bio: bio,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 127
+        lineNumber: 136
       },
       __self: undefined
     });
