@@ -1893,7 +1893,8 @@ const pageToShow = pageName => {
 
 const configValue = {
   showSignMeUp: true,
-  showSpeakerSpeakingDays: true
+  showSpeakerSpeakingDays: true,
+  loggedInUserEmail: 'peter@test.co'
 };
 
 const App = ({
@@ -1903,13 +1904,13 @@ const App = ({
     value: configValue,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 21
     },
     __self: undefined
   }, __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 22
     },
     __self: undefined
   }, pageToShow(pageName)));
@@ -2338,30 +2339,61 @@ const SignMeUp = ({
 
   const buttonText = sendProcessing ? "processing..." : "Get Updates"; //console.log("src/SignMeUp called");
 
+  if (context.loggedInUserEmail) {
+    return __jsx("div", {
+      className: "container",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 47
+      },
+      __self: undefined
+    }, __jsx("div", {
+      className: "content",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 48
+      },
+      __self: undefined
+    }, __jsx("span", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 49
+      },
+      __self: undefined
+    }, "Logged in User Email: ", context.loggedInUserEmail), "\xA0\xA0", __jsx("a", {
+      href: "/logout",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 50
+      },
+      __self: undefined
+    }, "Logout")));
+  }
+
   return context.showSignMeUp === false ? null : __jsx("div", {
     className: "container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 57
     },
     __self: undefined
   }, __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 58
     },
     __self: undefined
   }, __jsx(react_toastify__WEBPACK_IMPORTED_MODULE_3__["ToastContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 59
     },
     __self: undefined
   }), __jsx("div", {
     className: "content",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49
+      lineNumber: 60
     },
     __self: undefined
   }, __jsx("input", {
@@ -2377,7 +2409,7 @@ const SignMeUp = ({
     required: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50
+      lineNumber: 61
     },
     __self: undefined
   }), "\xA0", __jsx("button", {
@@ -2387,10 +2419,17 @@ const SignMeUp = ({
     type: "submit",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63
+      lineNumber: 74
     },
     __self: undefined
-  }, buttonText))));
+  }, buttonText), "\xA0\xA0", __jsx("a", {
+    href: "/login",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 82
+    },
+    __self: undefined
+  }, "Login"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SignMeUp);
@@ -2535,8 +2574,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _ImageToggleOnScroll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ImageToggleOnScroll */ "./src/ImageToggleOnScroll.js");
+/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App */ "./src/App.js");
 var _jsxFileName = "/Users/ronaldmutebi/Desktop/Desktop/bench/react-hooks-trials/src/SpeakerDetail.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 const SpeakerDetail = react__WEBPACK_IMPORTED_MODULE_0___default.a.memo(({
@@ -2548,12 +2589,14 @@ const SpeakerDetail = react__WEBPACK_IMPORTED_MODULE_0___default.a.memo(({
   bio,
   onHeartFavoriteHandler
 }) => {
-  console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
+  // console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
+  const context = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_App__WEBPACK_IMPORTED_MODULE_2__["ConfigContext"]);
+  console.log(`contexthhhh${context.loggedInUserEmail}`);
   return __jsx("div", {
     className: "card col-4 cardmin",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 21
     },
     __self: undefined
   }, __jsx(_ImageToggleOnScroll__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -2563,24 +2606,24 @@ const SpeakerDetail = react__WEBPACK_IMPORTED_MODULE_0___default.a.memo(({
     alt: "{firstName} {lastName}",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 22
     },
     __self: undefined
   }), __jsx("div", {
     className: "card-body",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 28
     },
     __self: undefined
   }, __jsx("h4", {
     className: "card-title",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 29
     },
     __self: undefined
-  }, __jsx("button", {
+  }, context.loggedInUserEmail ? __jsx("button", {
     "data-sessionid": id,
     className: favorite ? "heartredbutton" : "heartdarkbutton",
     onClick: e => {
@@ -2588,19 +2631,19 @@ const SpeakerDetail = react__WEBPACK_IMPORTED_MODULE_0___default.a.memo(({
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 31
     },
     __self: undefined
-  }), __jsx("span", {
+  }) : null, __jsx("span", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 39
     },
     __self: undefined
   }, firstName, " ", lastName)), __jsx("span", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 44
     },
     __self: undefined
   }, bio)));

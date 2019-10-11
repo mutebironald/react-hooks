@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ImageToggleOnScroll from "./ImageToggleOnScroll";
+import { ConfigContext } from './App'
+
+
 
 const SpeakerDetail = React.memo(({ //with React.memo(), the functiontn compnent will only render when its props have changed.//added after useMemo
                            id,
@@ -9,7 +12,11 @@ const SpeakerDetail = React.memo(({ //with React.memo(), the functiontn compnent
                            bio,
                            onHeartFavoriteHandler
                        }) => {
-    console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
+    // console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
+
+    const context = useContext(ConfigContext);
+    console.log(`contexthhhh${context.loggedInUserEmail}`)
+
     return (
         <div className="card col-4 cardmin">
             <ImageToggleOnScroll
@@ -20,6 +27,7 @@ const SpeakerDetail = React.memo(({ //with React.memo(), the functiontn compnent
             />
             <div className="card-body">
                 <h4 className="card-title">
+                    {context.loggedInUserEmail ? (
                     <button
                         data-sessionid={id}
                         className={favorite ? "heartredbutton" : "heartdarkbutton"}
@@ -27,6 +35,7 @@ const SpeakerDetail = React.memo(({ //with React.memo(), the functiontn compnent
                             onHeartFavoriteHandler(e, !favorite);
                         }}
                     />
+                    ): null }
                     <span>
             {firstName} {lastName}
           </span>

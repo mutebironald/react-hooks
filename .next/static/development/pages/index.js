@@ -13025,7 +13025,8 @@ var pageToShow = function pageToShow(pageName) {
 
 var configValue = {
   showSignMeUp: true,
-  showSpeakerSpeakingDays: true
+  showSpeakerSpeakingDays: true,
+  loggedInUserEmail: 'peter@test.co'
 };
 
 var App = function App(_ref) {
@@ -13034,13 +13035,13 @@ var App = function App(_ref) {
     value: configValue,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 21
     },
     __self: this
   }, __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 22
     },
     __self: this
   }, pageToShow(pageName)));
@@ -13496,30 +13497,61 @@ var SignMeUp = function SignMeUp(_ref) {
 
   var buttonText = sendProcessing ? "processing..." : "Get Updates"; //console.log("src/SignMeUp called");
 
+  if (context.loggedInUserEmail) {
+    return __jsx("div", {
+      className: "container",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 47
+      },
+      __self: this
+    }, __jsx("div", {
+      className: "content",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 48
+      },
+      __self: this
+    }, __jsx("span", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 49
+      },
+      __self: this
+    }, "Logged in User Email: ", context.loggedInUserEmail), "\xA0\xA0", __jsx("a", {
+      href: "/logout",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 50
+      },
+      __self: this
+    }, "Logout")));
+  }
+
   return context.showSignMeUp === false ? null : __jsx("div", {
     className: "container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 57
     },
     __self: this
   }, __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 58
     },
     __self: this
   }, __jsx(react_toastify__WEBPACK_IMPORTED_MODULE_4__["ToastContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 59
     },
     __self: this
   }), __jsx("div", {
     className: "content",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49
+      lineNumber: 60
     },
     __self: this
   }, __jsx("input", (_jsx = {
@@ -13534,7 +13566,7 @@ var SignMeUp = function SignMeUp(_ref) {
     required: true
   }, Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_jsx, "required", true), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_jsx, "__source", {
     fileName: _jsxFileName,
-    lineNumber: 50
+    lineNumber: 61
   }), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_jsx, "__self", this), _jsx)), "\xA0", __jsx("button", {
     disabled: !emailValid || sendProcessing,
     className: "btn",
@@ -13542,10 +13574,17 @@ var SignMeUp = function SignMeUp(_ref) {
     type: "submit",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63
+      lineNumber: 74
     },
     __self: this
-  }, buttonText))));
+  }, buttonText), "\xA0\xA0", __jsx("a", {
+    href: "/login",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 82
+    },
+    __self: this
+  }, "Login"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SignMeUp);
@@ -13690,8 +13729,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _ImageToggleOnScroll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ImageToggleOnScroll */ "./src/ImageToggleOnScroll.js");
+/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App */ "./src/App.js");
 var _jsxFileName = "/Users/ronaldmutebi/Desktop/Desktop/bench/react-hooks-trials/src/SpeakerDetail.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 var SpeakerDetail = react__WEBPACK_IMPORTED_MODULE_0___default.a.memo(function (_ref) {
@@ -13701,12 +13742,14 @@ var SpeakerDetail = react__WEBPACK_IMPORTED_MODULE_0___default.a.memo(function (
       favorite = _ref.favorite,
       bio = _ref.bio,
       onHeartFavoriteHandler = _ref.onHeartFavoriteHandler;
-  console.log("SpeakerDetail:".concat(id, " ").concat(firstName, " ").concat(lastName, " ").concat(favorite));
+  // console.log(`SpeakerDetail:${id} ${firstName} ${lastName} ${favorite}`);
+  var context = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_App__WEBPACK_IMPORTED_MODULE_2__["ConfigContext"]);
+  console.log("contexthhhh".concat(context.loggedInUserEmail));
   return __jsx("div", {
     className: "card col-4 cardmin",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 21
     },
     __self: this
   }, __jsx(_ImageToggleOnScroll__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -13716,24 +13759,24 @@ var SpeakerDetail = react__WEBPACK_IMPORTED_MODULE_0___default.a.memo(function (
     alt: "{firstName} {lastName}",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 22
     },
     __self: this
   }), __jsx("div", {
     className: "card-body",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 28
     },
     __self: this
   }, __jsx("h4", {
     className: "card-title",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 29
     },
     __self: this
-  }, __jsx("button", {
+  }, context.loggedInUserEmail ? __jsx("button", {
     "data-sessionid": id,
     className: favorite ? "heartredbutton" : "heartdarkbutton",
     onClick: function onClick(e) {
@@ -13741,19 +13784,19 @@ var SpeakerDetail = react__WEBPACK_IMPORTED_MODULE_0___default.a.memo(function (
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 31
     },
     __self: this
-  }), __jsx("span", {
+  }) : null, __jsx("span", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 39
     },
     __self: this
   }, firstName, " ", lastName)), __jsx("span", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 44
     },
     __self: this
   }, bio)));
